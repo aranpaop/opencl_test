@@ -80,9 +80,10 @@ int main()
 
             // Create command queue on this device.
             runtime::bp_cmdqueue bp_cmdqueue{};
-            cl_command_queue command_queue = bp_cmdqueue.create_command_queue(context, device);
-            bp_cmdqueue.enqueue_kernel(command_queue, float_kernel);
-            bp_cmdqueue.enqueue_kernel(command_queue, double_kernel);
+            cl_command_queue command_queue_float = bp_cmdqueue.create_command_queue(context, device);
+            bp_cmdqueue.enqueue_kernel(command_queue_float, float_kernel);
+            cl_command_queue command_queue_double = bp_cmdqueue.create_command_queue(context, device);
+            bp_cmdqueue.enqueue_kernel(command_queue_double, double_kernel);
         }
     }
     return 0;
